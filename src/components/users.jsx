@@ -15,8 +15,8 @@ const Users = () => {
 
     return (
         <>
-            <h1>{count} человек тусанет с тобой сегодня</h1>
-            <table className="table table-striped">
+            <h1 className="badge bg-primary">{count} человек тусанет с тобой сегодня</h1>
+            <table className="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Имя</th>
@@ -35,6 +35,7 @@ const Users = () => {
                                 <td>
                                     {user.qualities.map((item)=>
                                         <span 
+                                            className={"badge + m-1 bg-" + item.color} 
                                             key={item._id}>
                                                 {item.name}
                                         </span>
@@ -46,11 +47,11 @@ const Users = () => {
                                 <td>{user.completedMeetings}</td>
                                 <td>{user.rate}</td>
                                 <td>
-                                    <button>Delete</button>
+                                    <button className="btn bg-danger">Delete</button>
                                 </td>
                             </tr>
                         );
-                    })};
+                    })}
                 </tbody>
             </table>
         </>
