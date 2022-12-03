@@ -12,13 +12,24 @@ const Users = () => {
         console.log(usersId);
         setUsers(users.filter((user) => user._id !== usersId));
     };
-    const renderPhrase = () => {
-
+    const renderPhrase = (number) => {
+        const lastOne = Number(number.toString().slice(-1));
+        if(number > 4 && number < 15) return "человек тусанет";
+        if([2,3,4].indexOf(lastOne) >= 0) return "человека тусанут";
+        if(lastOne === 1) return "человек тусанет";
+        return "Человек тусанет";
     };
 
     return (
         <>
-            <h1 className="badge bg-primary">{count} человек тусанет с тобой сегодня</h1>
+            <span
+                className={"badge bg-" + (users.length  > 0 ? "primary" : "danger")}>
+                {users.length > 0 
+                ? `${users.length} ${renderPhrase(users.length)} с тобой сегодня`
+                : "Никто с тобой не тусанет сегодня"
+                }
+            </span>
+            
             <table className="table table-hover">
                 <thead>
                     <tr>
