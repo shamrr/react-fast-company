@@ -4,10 +4,13 @@ import "bootstrap/dist/css/bootstrap.css"
 
 const Users = () => {
     const [users, setUsers] = useState(api.users.fetchAll());
-    
-    let count = users.length;
-    const handleDelete = (userId) => {
+    const [count, setCount] = useState(users.length)
 
+    const handleDelete = (usersId) => {
+        console.log('delete');
+        setCount((prevState) => prevState - 1);
+        console.log(usersId);
+        setUsers(users.filter((user) => user._id !== usersId));
     };
     const renderPhrase = () => {
 
@@ -47,7 +50,7 @@ const Users = () => {
                                 <td>{user.completedMeetings}</td>
                                 <td>{user.rate}</td>
                                 <td>
-                                    <button className="btn bg-danger">Delete</button>
+                                    <button className="btn bg-danger" onClick={() => handleDelete(user._id)}>Delete</button>
                                 </td>
                             </tr>
                         );
