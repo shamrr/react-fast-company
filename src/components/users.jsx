@@ -29,8 +29,8 @@ const Users = () => {
                 : "Никто с тобой не тусанет сегодня"
                 }
             </span>
-            
-            <table className="table table-hover">
+            {users.length > 0 &&
+                <table className="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Имя</th>
@@ -67,7 +67,9 @@ const Users = () => {
                         );
                     })}
                 </tbody>
-            </table>
+                </table>
+            }
+            
         </>
     );    
 } 
